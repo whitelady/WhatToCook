@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:windowActionBar">@color/color_primary</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+    </style>
+
+    <style name="RecipeTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabSelectedTextColor">@color/text_card</item>
+    </style>
+
+    <style name="RecipeTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_card</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="CustomActionBarTheme"
+        parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/MyPopupMenu</item>
+        <item name="android:itemTextAppearance">@style/TextAppearance</item>
+    </style>
+    <!-- Popup Menu Background Color styles -->
+    <style name="MyPopupMenu"
+        parent="@android:style/Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@color/color_primary</item>
+    </style>
+    <!-- Popup Menu Text Color styles -->
+    <style name="TextAppearance">
+        <item name="android:textColor">@color/text_card</item>
+    </style>
+
+
+
+</resources>
