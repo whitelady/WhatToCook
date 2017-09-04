@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">What To Cook?</string>
 
-    <string name="api_key">6f9d8002ed4579edae90e6b7623f5a55</string>
+    <string name="api_key">your api-key goes here</string>
     <string name="api_url_search">http://food2fork.com/api/search</string>
     <string name="api_url_get">http://food2fork.com/api/get</string>
     <string name="check_internet">Check your Internet connection.</string>
