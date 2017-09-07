@@ -306,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
             //use the query to search your data somehow
             searchRecipes(list);
+
         }
     }
 
