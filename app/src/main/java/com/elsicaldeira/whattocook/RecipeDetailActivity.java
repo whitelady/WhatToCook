@@ -220,7 +220,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
             sourceUrl = recipeObj.getString(Util.SOURCE_URL_TAG);
             imageUrl = recipeObj.getString(Util.IMAGE_URL_TAG);
 
-            title = Html.fromHtml(recipeObj.getString(Util.TITLE_TAG)).toString();
+            title = Util.fromHtml(recipeObj.getString(Util.TITLE_TAG)).toString();
             publisher = recipeObj.getString(Util.PUBLISHER_TAG);
             publisherUrl = recipeObj.getString(Util.PUBLISHER_URL_TAG);
             f2furl = recipeObj.getString(Util.F2F_URL_TAG);
