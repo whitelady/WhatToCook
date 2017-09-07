@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -29,6 +30,7 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity {
     private String urlStr;
     private String apiKey;
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     Button tryagainBtn;
     static View.OnClickListener myOnClickListener;
     private RecyclerView.Adapter adapter;
-    private static RecyclerView recipeListView;
+    private RecyclerView recipeListView;
     //private static StaggeredGridLayoutManager mStaggeredLayoutManager;
     private static StaggeredGridLayoutManager mStaggeredLayoutManager;
     private Menu menu;
@@ -113,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * seeRecipe
          * get recipe details to pass to the activity
-         * @param v
+         * @param v view
          */
 
         private void seeRecipe(View v) {
@@ -137,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * goActivity
      * Execute activity of recipe selected
-     * @param context
+     * @param context app context
      */
 
     private void goActivity(Context context) {
@@ -154,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * searhRecipes
      * Invoke task to connect to get results
-     * @param list
+     * @param list recipe list
      */
     private void searchRecipes(String list){
         if (Util.checkInternetConnection(getBaseContext())) {
@@ -196,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }.execute(connectionStr);
             } else {
-                list = (list);
+               // list = (list);
                 resultsTxt.setText(getResources().getString(R.string.results_search) + " " + list);
                 String connectionStr = Uri.parse(urlStr + "?key=" + apiKey)
                         .buildUpon()
@@ -252,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * readJSON
      * Process string received
-     * @param cadena
+     * @param cadena JSON string
      */
     private void readJSON(String cadena){
         Log.i(Util.RECIPE_TAG, "leyendo JSON");
@@ -260,11 +262,14 @@ public class MainActivity extends AppCompatActivity {
             JSONObject json = new JSONObject(cadena);
             totalRecipes = Integer.parseInt(json.getString(Util.COUNT_TAG));
             recipes = json.getJSONArray(Util.RECIPES_TAG);
-            recipesList = new ArrayList<Recipe>();
+            recipesList = new ArrayList<>();
+
             // looping through All recipes
+
             for (int i = 0; i < recipes.length(); i++) {
                 JSONObject recipeObj = recipes.getJSONObject(i);
-                String title = Html.fromHtml(recipeObj.getString(Util.TITLE_TAG)).toString();
+
+                String title = Util.fromHtml(recipeObj.getString(Util.TITLE_TAG)).toString();
                 String publisher = recipeObj.getString(Util.PUBLISHER_TAG);
                 String publisherUrl = recipeObj.getString(Util.PUBLISHER_URL_TAG);
                 String f2fUrl = recipeObj.getString(Util.F2F_URL_TAG);
@@ -284,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Handle search
-     * @param intent
+     * @param intent intent to open
      */
     @Override
     protected void onNewIntent(Intent intent) {

@@ -3,12 +3,16 @@ package com.elsicaldeira.whattocook;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
+import android.text.Html;
+import android.text.Spanned;
 import android.widget.Toast;
 
 /**
  * Created by Elsi on 23/08/2015.
+ * Modified 07/09/2017
  */
-public class Util {
+public final class Util {
     public static String TITLE_TAG = "title";
     public static String PUBLISHER_TAG = "publisher";
     public static String PUBLISHER_URL_TAG = "publisher_url";
@@ -26,10 +30,10 @@ public class Util {
     public static String FROM_FAV = "fromFavs";
     public static int ONE_COLUMN = 1;
     public static int TWO_COLUMN = 2;
-    private static boolean mainListView = true;
-    private static boolean favListView = true;
+    public static boolean mainListView = true;
+    public static boolean favListView = true;
 
-    private static Context appContext;
+    public static Context appContext;
 
     public static Context getActContext() {
         return appContext;
@@ -58,7 +62,7 @@ public class Util {
 
     /**
      * Verify Internet connection
-     * @return
+     * @return true or false
      */
     public static boolean checkInternetConnection(Context context) {
         // get Connectivity Manager object to check connection
@@ -80,5 +84,15 @@ public class Util {
         }
         return false;
     }
+
+    @SuppressWarnings("deprecation")
+    public static Spanned fromHtml(String source) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            return Html.fromHtml(source);
+        }
+    }
+
 
 }
