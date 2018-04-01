@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 
@@ -29,6 +30,8 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import static com.bumptech.glide.request.RequestOptions.centerCropTransform;
 
 
 public class RecipeDetailActivity extends AppCompatActivity {
@@ -88,20 +91,14 @@ public class RecipeDetailActivity extends AppCompatActivity {
         searchRecipe(recipeId);
         recipeImg = (ImageView) findViewById(R.id.imageView);
 
-       /* Picasso.with(this)
+        Glide.with(this)
                 .load(imageUrl)
-                .placeholder(R.drawable.placeholder_loading) // optional
-                .error(R.drawable.placeholder_error)         // optional
-                .fit()
-                .centerCrop()
-                .into(recipeImg);*/
-       Glide.with(this)
-                .load(imageUrl)
-                .placeholder(R.drawable.placeholder_loading) // optional
-                .error(R.drawable.placeholder_error)         // optional
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
+                .apply(centerCropTransform()
+                        .placeholder(R.drawable.placeholder_loading)
+                        .error(R.drawable.placeholder_error)
+                        .priority(Priority.HIGH))
                 .into(recipeImg);
+
         titleRecipe = (TextView) findViewById(R.id.recipeTitle);
         favButton = (FloatingActionButton) findViewById(R.id.favBtn);
         if(recipeIsFav){

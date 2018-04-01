@@ -6,7 +6,6 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.text.Html;
 import android.text.Spanned;
-import android.widget.Toast;
 
 /**
  * Created by Elsi on 23/08/2015.

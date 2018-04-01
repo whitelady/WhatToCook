@@ -12,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static com.bumptech.glide.request.RequestOptions.centerCropTransform;
 
 /**
  * Created by Elsi on 15/08/2015.
@@ -58,18 +60,14 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Re
         holder.recipeRating.setText(recipeDataSet.get(i).getSocialRank());
         Uri uri = Uri.parse(recipeDataSet.get(i).getImageurl());
         Context context = holder.recipeImg.getContext();
-        /*Picasso.with(context).load(uri)
-                .placeholder(R.drawable.placeholder_loading) // optional
-                .error(R.drawable.placeholder_error)         // optional
-                .fit()
-                .into(holder.recipeImg);*/
-       Glide.with(context).load(uri)
-                .placeholder(R.drawable.placeholder_loading) // optional
-                .error(R.drawable.placeholder_error)         // optional
-                .override(300,300)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
+        Glide.with(context)
+                .load(uri)
+                .apply(centerCropTransform()
+                        .placeholder(R.drawable.placeholder_loading)
+                        .error(R.drawable.placeholder_error)
+                        .priority(Priority.HIGH))
                 .into(holder.recipeImg);
+
         //holder.recipeImg.setImageResource(recipeDataSet.get(i).getImage());
 
     }

@@ -15,7 +15,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.GridLayoutManager;
 
-import android.text.Html;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.util.Log;
@@ -412,4 +411,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
