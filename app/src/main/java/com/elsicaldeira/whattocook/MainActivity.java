@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     static View.OnClickListener myOnClickListener;
     private RecyclerView.Adapter adapter;
     private RecyclerView recipeListView;
-    //private static StaggeredGridLayoutManager mStaggeredLayoutManager;
     private static StaggeredGridLayoutManager mStaggeredLayoutManager;
     private Menu menu;
     AsyncTask taskRecipe;
@@ -160,7 +159,8 @@ public class MainActivity extends AppCompatActivity {
     private void searchRecipes(String list){
         if (Util.checkInternetConnection(getBaseContext())) {
             if (list.equalsIgnoreCase("")) {
-                resultsTxt.setText(getResources().getString(R.string.results) + " " + list);
+                //resultsTxt.setText(String.format(getResources().getString(R.string.results_search),list));
+                resultsTxt.setText(getResources().getString(R.string.results));
                 String connectionStr = urlStr + "?key=" + apiKey;
                 Log.i(Util.RECIPE_TAG, connectionStr);
 
@@ -198,7 +198,9 @@ public class MainActivity extends AppCompatActivity {
                 }.execute(connectionStr);
             } else {
                // list = (list);
-                resultsTxt.setText(getResources().getString(R.string.results_search) + " " + list);
+                //resultsTxt.setText(getResources().getString(R.string.results));
+                resultsTxt.setText (String.format(getResources().getString(R.string.results_search),list));
+               // String.format(res.getString(R.string.my_welcome_messages), name, notificationCount);
                 String connectionStr = Uri.parse(urlStr + "?key=" + apiKey)
                         .buildUpon()
                         .appendQueryParameter("q", list)
