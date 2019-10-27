@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">What To Cook?</string>
 
-    <string name="api_key">your api-key goes here</string>
-    <string name="api_url_search">http://food2fork.com/api/search</string>
-    <string name="api_url_get">http://food2fork.com/api/get</string>
+    <string name="api_key">6f9d8002ed4579edae90e6b7623f5a55</string>
+    <string name="api_url_search">https://www.food2fork.com/api/search</string>
+    <string name="api_url_get">https://www.food2fork.com/api/get</string>
     <string name="check_internet">Check your Internet connection.</string>
     <string name="results">Popular recipes</string>
-    <string name="results_search">Popular recipes with: </string>
+    <string name="results_search">Popular recipes with: %1$s</string>
     <string name="no_internet">No Internet connection - make sure you are connected and try again!</string>
     <string name="error_feed">Problem with your Internet connection try again!</string>
     <string name="no_results">No results found.</string>

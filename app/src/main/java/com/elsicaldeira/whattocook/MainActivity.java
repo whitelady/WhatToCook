@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.GridLayoutManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -205,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
                         .buildUpon()
                         .appendQueryParameter("q", list)
                         .build().toString();
+
                 taskRecipe = new HttpAsyncTask() {
                     @Override
                     protected void onPreExecute() {
@@ -215,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onPostExecute(String result) {
                         // do whatever you want with result
+
                         if (!result.isEmpty()) {
                             readJSON(result);
                             progressDialog.setVisibility(View.GONE);
@@ -264,9 +265,9 @@ public class MainActivity extends AppCompatActivity {
             totalRecipes = Integer.parseInt(json.getString(Util.COUNT_TAG));
             recipes = json.getJSONArray(Util.RECIPES_TAG);
             recipesList = new ArrayList<>();
-
+            Log.i(Util.RECIPE_TAG, "leyendo JSON " +  totalRecipes);
             // looping through All recipes
-
+            Log.i(Util.RECIPE_TAG, "leyendo JSON " + recipes.length());
             for (int i = 0; i < recipes.length(); i++) {
                 JSONObject recipeObj = recipes.getJSONObject(i);
 
